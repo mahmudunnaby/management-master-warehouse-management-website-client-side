@@ -1,0 +1,13 @@
+.notfound-page {
+    font-size: 200px;
+    color: aliceblue;
+
+}
+
+.space {
+    padding: 200px;
+    margin: 100px;
+    background-color: rgb(94, 52, 245);
+    border-radius: 30px;
+    box-shadow: 30px 10px 60px;
+}

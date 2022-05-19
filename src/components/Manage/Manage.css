@@ -1,0 +1,11 @@
+.product-img {
+    height: 50px;
+    width: 50px;
+}
+
+.space-inventory {
+    background-color: rgb(254, 254, 254);
+    box-shadow: 30px 10px 60px;
+    border-radius: 30px;
+    padding: 30px;
+}

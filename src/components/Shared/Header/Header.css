@@ -1,0 +1,16 @@
+.text-container {
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.img-size {
+    height: 100px;
+    width: 100px;
+}
+
+.space-message {
+    margin-left: 100px;
+    background-color: rgb(55, 0, 255);
+    border-radius: 30px;
+    box-shadow: 30px 10px 60px;
+}

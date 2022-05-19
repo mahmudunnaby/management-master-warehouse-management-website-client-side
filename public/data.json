@@ -1,0 +1,101 @@
+[
+    {
+        "_id": 0,
+        "price": "$10",
+        "quentity": "200",
+        "picture": "https://i.ibb.co/8rMNbps/book1.jpg",
+        "supplier": "brown",
+        "name": "Kendra Harris",
+        "discription": "Exercitation sint in velit commodo.\r\n"
+    },
+    {
+        "_id": 1,
+        "price": "$15",
+        "quentity": "10",
+        "picture": "https://i.ibb.co/7Vq36M8/book2.jpg",
+        "supplier": "green",
+        "name": "Kristin Peck",
+        "discription": "Irure enim ipsum ut aliqua irure enim. \r\n"
+    },
+    {
+        "_id": 2,
+        "price": "$16",
+        "quentity": "100",
+        "picture": "https://i.ibb.co/0cLk2DG/book12.jpg",
+        "supplier": "blue",
+        "name": "Steele Norman",
+        "discription": "Veniam commodo nulla commodo nostrud mollit adipisicing amet qui ex veniam dolor nostrud commodo.\r\n"
+    },
+    {
+        "_id": 3,
+        "price": "$25",
+        "quentity": "30",
+        "picture": "https://i.ibb.co/k6LSj26/book13.jpg",
+        "supplier": "blue",
+        "name": "Marian Malone",
+        "discription": "Reprehenderit dolor id proident nisi ad. Esse dolor elit excepteur \r\n"
+    },
+    {
+        "_id": 4,
+        "price": "$160",
+        "quentity": "40",
+        "picture": "https://i.ibb.co/26XZt3M/book5.jpg",
+        "supplier": "brown",
+        "name": "Bender Morin",
+        "discription": "Incididunt dolor tempor id ad. Non magna nulla aliqua cupidatat ut \r\n"
+    },
+    {
+        "_id": 5,
+        "price": "$60",
+        "quentity": "90",
+        "picture": "https://i.ibb.co/BBzwvCs/book6.jpg",
+        "supplier": "blue",
+        "name": "Peterson Mckinney",
+        "discription": "Duis culpa voluptate et deserunt ut mollit adipisicing. \r\n"
+    },
+    {
+        "_id": 6,
+        "price": "$55",
+        "quentity": "450",
+        "picture": "https://i.ibb.co/mcFTYsk/book7.jpg",
+        "supplier": "green",
+        "name": "Hopper Mcclure",
+        "discription": "Irure occaecat elit ea ea excepteur est dolore anim elit laborum est culpa sint ullamco. Laborum non esse enim culpa. Dolore fugiat consequa.\r\n"
+    },
+    {
+        "_id": 7,
+        "price": "$100",
+        "quentity": "30",
+        "picture": "https://i.ibb.co/cL2013p/book8.jpg",
+        "supplier": "brown",
+        "name": "Kerri Wright",
+        "discription": "Cillum laboris deserunt in excepteur ex ullamco deserunt cupidatat aliqua deserunt.\r\n"
+    },
+    {
+        "_id": 8,
+        "price": "$20",
+        "quentity": "90",
+        "picture": "https://i.ibb.co/mFdBLnX/book9.jpg",
+        "supplier": "brown",
+        "name": "Isabelle Kidd",
+        "discription": "Laborum officia velit ipsum cillum sint pariatur laboris aliqua.et consectetur culpa occaecat velit dolore sint laborum fugiat pariatur laborum.\r\n"
+    },
+    {
+        "_id": 9,
+        "price": "$70",
+        "quentity": "60",
+        "picture": "https://i.ibb.co/YhMnbDF/book10.jpg",
+        "supplier": "brown",
+        "name": "Castillo Arnold",
+        "discription": "Et sunt occaecat ex enim excepteur ea. Sint minim ut aliquip qui  et mollit id deserunt proident. Veniam amet minim ea nulla pariatur magna aliquip id.\r\n"
+    },
+    {
+        "_id": 10,
+        "price": "$75",
+        "quentity": "30",
+        "picture": "https://i.ibb.co/NTDmyxC/book11.jpg",
+        "supplier": "brown",
+        "name": "Tucker Joseph",
+        "discription": "Sunt laborum officia qui dolore. Aute magna tempor elit eu aniunt ea.\r\n"
+    }
+]
