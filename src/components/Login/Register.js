@@ -1,24 +1,59 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Sociallogin from './Sociallogin/Sociallogin';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { useUpdateProfile } from 'react-firebase-hooks/auth';
+
+
+
 
 const Register = () => {
 
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    const [updateProfile, updating, errorProfile] = useUpdateProfile(auth);
 
     const refName = useRef('');
     const refEmail = useRef('');
     const refPassword = useRef('');
     const navigate = useNavigate()
+    const [agree, setAgree] = useState(false)
+    let errorText;
 
-    const handleRegisterSubmit = (event) => {
+    const handleRegisterSubmit = async (event) => {
         event.preventDefault()
 
         const name = refName.current.value
         const email = refEmail.current.value
         const password = refPassword.current.value
 
+        await createUserWithEmailAndPassword(email, password)
+        await updateProfile(name)
+
         console.log(name, email, password);
+    }
+
+    if (user) {
+        navigate('/home')
+    }
+
+    if (loading | updating) {
+
+        <div class="spinner-grow text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    }
+    if (error | errorProfile) {
+
+        errorText = <p className='text-danger'>Error: {error.message}</p>
+
     }
 
     const navigateToLogin = () => {
@@ -46,10 +81,11 @@ const Register = () => {
                             <Form.Control ref={refPassword} type="password" placeholder="Password" />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Check me out" />
+                            <Form.Check onClick={() => { setAgree(!agree) }} type="checkbox" label="Agree Terms & Conditions" />
                         </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Submit
+                        <Button disabled={!agree} variant="primary" type="submit">
+
+                            Register
                         </Button>
                     </Form>
                     <Sociallogin></Sociallogin>

@@ -9,9 +9,11 @@ const Manageproduct = () => {
     useEffect(() => {
         fetch('data.json')
             .then(res => res.json())
-            .then(data => setProducts(data))
+            .then(data => console.log(data))
     }, [])
 
+
+    console.log(products);
     return (
         <div className='container'>
             <h1 className='mt-5 '>Update Inventory: {manageproduct}</h1>
@@ -27,6 +29,7 @@ const Manageproduct = () => {
 
                     </div>
                 </div>
+
                 <div class="col-8">
                     <div class="tab-content" id="nav-tabContent">
 

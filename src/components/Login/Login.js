@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 import Sociallogin from './Sociallogin/Sociallogin';
 
@@ -9,12 +11,26 @@ const Login = () => {
     const refEmail = useRef('')
     const refPassword = useRef('')
     const navigate = useNavigate()
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+    let errorText;
+
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
     const handleLoginSubmit = (event) => {
         event.preventDefault();
 
         const email = refEmail.current.value;
         const password = refPassword.current.value;
         console.log(email, password);
+        signInWithEmailAndPassword(email, password)
 
     }
 
@@ -23,10 +39,23 @@ const Login = () => {
         navigate('/register')
     }
 
-    const resetPassword = () => {
+    const resetPassword = async () => {
+        const email = refEmail.current.value;
+        await sendPasswordResetEmail(email)
+        alert('email sent')
 
     }
-
+    if (user) {
+        navigate(from, { replace: true })
+    }
+    if (error) {
+        errorText = <p className='text-danger'>Error: {error.message}</p>
+    }
+    if (loading | sending) {
+        <div class="spinner-grow text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    }
 
     return (
 
@@ -45,13 +74,11 @@ const Login = () => {
                             <Form.Label className='px-3 fw-bold'>Password:</Form.Label>
                             <Form.Control ref={refPassword} type="password" placeholder="Password" />
                         </Form.Group>
-                        <Form.Group className="mb-2" controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Check me out" />
-                        </Form.Group>
                         <Button variant="primary" type="submit">
-                            Submit
+                            Login
                         </Button>
                     </Form>
+                    {errorText}
                     <Sociallogin></Sociallogin>
                     <p className='mt-3'>Don't have an account. <span className='text-primary' role="button" onClick={navigateToRegister}>Please register</span> </p>
                     <p className='mt-3'>Forgot password? <span className='text-primary' role="button" onClick={resetPassword}>Reset password</span>  </p>

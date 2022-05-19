@@ -9,15 +9,15 @@ const Totalproduct = () => {
         fetch('data.json')
             .then(res => res.json())
             .then(data => setProducts(data))
+    }, [])
+
+    useEffect(() => {
         let s = 0;
         for (const product of products) {
             s += parseInt(product.quentity)
         }
         setSum(s)
-
-
     }, [products])
-
 
 
     console.log(sum);
