@@ -6,6 +6,7 @@
         "picture": "https://i.ibb.co/8rMNbps/book1.jpg",
         "supplier": "brown",
         "name": "Kendra Harris",
+        "email": "mahmudunnabyemon0@gmail.com",
         "discription": "Exercitation sint in velit commodo.\r\n"
     },
     {
@@ -15,6 +16,7 @@
         "picture": "https://i.ibb.co/7Vq36M8/book2.jpg",
         "supplier": "green",
         "name": "Kristin Peck",
+        "email": "mahmudunnabyemon0@gmail.com",
         "discription": "Irure enim ipsum ut aliqua irure enim. \r\n"
     },
     {
@@ -24,6 +26,7 @@
         "picture": "https://i.ibb.co/0cLk2DG/book12.jpg",
         "supplier": "blue",
         "name": "Steele Norman",
+        "email": "mahmudunnabyemon0@gmail.com",
         "discription": "Veniam commodo nulla commodo nostrud mollit adipisicing amet qui ex veniam dolor nostrud commodo.\r\n"
     },
     {
@@ -33,6 +36,7 @@
         "picture": "https://i.ibb.co/k6LSj26/book13.jpg",
         "supplier": "blue",
         "name": "Marian Malone",
+        "email": "mahmudunnabyemon0@gmail.com",
         "discription": "Reprehenderit dolor id proident nisi ad. Esse dolor elit excepteur \r\n"
     },
     {
@@ -42,6 +46,7 @@
         "picture": "https://i.ibb.co/26XZt3M/book5.jpg",
         "supplier": "brown",
         "name": "Bender Morin",
+        "email": "mahmudunnabyemon0@gmail.com",
         "discription": "Incididunt dolor tempor id ad. Non magna nulla aliqua cupidatat ut \r\n"
     },
     {
@@ -51,6 +56,7 @@
         "picture": "https://i.ibb.co/BBzwvCs/book6.jpg",
         "supplier": "blue",
         "name": "Peterson Mckinney",
+        "email": "mahmudunnabyemon0@gmail.com",
         "discription": "Duis culpa voluptate et deserunt ut mollit adipisicing. \r\n"
     },
     {
@@ -60,6 +66,7 @@
         "picture": "https://i.ibb.co/mcFTYsk/book7.jpg",
         "supplier": "green",
         "name": "Hopper Mcclure",
+        "email": "mahmudunnabyemon0@gmail.com",
         "discription": "Irure occaecat elit ea ea excepteur est dolore anim elit laborum est culpa sint ullamco. Laborum non esse enim culpa. Dolore fugiat consequa.\r\n"
     },
     {
@@ -69,6 +76,7 @@
         "picture": "https://i.ibb.co/cL2013p/book8.jpg",
         "supplier": "brown",
         "name": "Kerri Wright",
+        "email": "mahmudunnabyemon0@gmail.com",
         "discription": "Cillum laboris deserunt in excepteur ex ullamco deserunt cupidatat aliqua deserunt.\r\n"
     },
     {
@@ -78,6 +86,7 @@
         "picture": "https://i.ibb.co/mFdBLnX/book9.jpg",
         "supplier": "brown",
         "name": "Isabelle Kidd",
+        "email": "mahmudunnabyemon0@gmail.com",
         "discription": "Laborum officia velit ipsum cillum sint pariatur laboris aliqua.et consectetur culpa occaecat velit dolore sint laborum fugiat pariatur laborum.\r\n"
     },
     {
@@ -87,6 +96,7 @@
         "picture": "https://i.ibb.co/YhMnbDF/book10.jpg",
         "supplier": "brown",
         "name": "Castillo Arnold",
+        "email": "mahmudunnabyemon0@gmail.com",
         "discription": "Et sunt occaecat ex enim excepteur ea. Sint minim ut aliquip qui  et mollit id deserunt proident. Veniam amet minim ea nulla pariatur magna aliquip id.\r\n"
     },
     {
@@ -96,6 +106,7 @@
         "picture": "https://i.ibb.co/NTDmyxC/book11.jpg",
         "supplier": "brown",
         "name": "Tucker Joseph",
+        "email": "mahmudunnabyemon0@gmail.com",
         "discription": "Sunt laborum officia qui dolore. Aute magna tempor elit eu aniunt ea.\r\n"
     }
 ]
