@@ -2,7 +2,12 @@ import userEvent from '@testing-library/user-event';
 import React, { useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading/Loading'
 import style from './Additem.css'
+
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Additem = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -13,6 +18,9 @@ const Additem = () => {
     const refQuentity = useRef(0)
     const refPrice = useRef(0)
 
+    if (loading) {
+        return <Loading></Loading>
+    }
 
 
 
@@ -38,7 +46,12 @@ const Additem = () => {
         })
 
             .then(res => res.json())
-            .then(data => { console.log(data) })
+            .then(data => {
+                console.log(data)
+
+                toast("Product Added")
+            })
+
 
 
     }
@@ -82,7 +95,7 @@ const Additem = () => {
                 </div>
 
                 <button type='submit' className='btn btn-primary mt-3 px-3'>Add Item</button>
-
+                <ToastContainer />
             </form>
 
 
