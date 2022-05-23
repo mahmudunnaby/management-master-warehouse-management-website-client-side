@@ -14,7 +14,7 @@ const Manageproduct = () => {
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [products])
-    console.log(products);
+    // console.log(products);
 
     const handleUpdateQuantity = (event) => {
         event.preventDefault()
@@ -44,6 +44,33 @@ const Manageproduct = () => {
                 }
 
             })
+    }
+
+    const handleDelivered = () => {
+
+        const remaining = parseInt(products.quentity) - 1
+
+        const updateDelivered = { quentity: remaining }
+
+        fetch(`http://localhost:5000/delivered/${manageproduct}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updateDelivered),
+        })
+
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    toast("delivered")
+                    setProducts(updateDelivered)
+                }
+
+            })
+        console.log(remaining);
+
     }
 
 
@@ -101,7 +128,7 @@ const Manageproduct = () => {
                                     <img className='mb-3 w-25' src={products.picture} alt="" />
                                     <h5 class="card-title">Current Quentity: {products.quentity}</h5>
                                     <p class="card-text">Get the product delivered by pressing delivered</p>
-                                    <button className='btn btn-primary my-3 '> Delivered </button>
+                                    <button onClick={handleDelivered} className='btn btn-primary my-3 '> Delivered </button>
                                     <ProgressBar animated now={products.quentity} />
                                 </div>
 
@@ -119,6 +146,8 @@ const Manageproduct = () => {
                                 <div class="card-body">
                                     <h5 class="card-title">Current quentity is {products.quentity}</h5>
                                     <p class="card-text">Restock Now!</p>
+                                    <ProgressBar animated now={products.quentity} />
+                                    <img className='my-3 w-25' src={products.picture} alt="" />
 
                                     <form onSubmit={handleUpdateQuantity} >
                                         <input ref={refRestockQuentity} type="text" placeholder='Quantity' />
