@@ -8,6 +8,7 @@ const ImmediateRestock = () => {
     const [products, setProducts] = useState([])
     const navigate = useNavigate()
 
+
     useEffect(() => {
         fetch(`http://localhost:5000/products`)
             .then(res => res.json())

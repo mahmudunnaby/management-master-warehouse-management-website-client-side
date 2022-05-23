@@ -1,19 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ProgressBar } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Manageproduct = () => {
     const { manageproduct } = useParams()
     const [products, setProducts] = useState({})
+    const refRestockQuentity = useRef('')
 
     useEffect(() => {
         const url = `http://localhost:5000/products/${manageproduct}`
         fetch(url)
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [])
+    }, [products])
     console.log(products);
 
+    const handleUpdateQuantity = (event) => {
+        event.preventDefault()
+        const RestockQuentity = refRestockQuentity.current.value
+        // console.log(RestockQuantity);
+        const newQuentity = parseInt(products.quentity) + parseInt(RestockQuentity)
+
+        const updateQuentity = { quentity: newQuentity }
+
+        console.log(updateQuentity, typeof (updateQuentity));
+
+
+        fetch(`http://localhost:5000/products/${manageproduct}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updateQuentity),
+        })
+
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    toast("Stock Updated")
+                    setProducts(updateQuentity)
+                }
+
+            })
+    }
 
 
 
@@ -24,7 +55,7 @@ const Manageproduct = () => {
         <div className='container'>
             <h1 className='mt-5 '>Update Inventory : {products.name}</h1>
 
-            <img className='w-50' src={products.picture} alt="" />
+            <img className='w-25' src={products.picture} alt="" />
             {/* <img className='w-50' src='https://cdn.dribbble.com/users/1677926/screenshots/6803180/inventory.gif' alt="" /> */}
 
 
@@ -64,10 +95,10 @@ const Manageproduct = () => {
 
                             <div class="card text-center">
                                 <div class="card-header">
-                                    Featured
+                                    {products.name}
                                 </div>
                                 <div class="card-body">
-                                    <img className='mb-3' src="" alt="" />
+                                    <img className='mb-3 w-25' src={products.picture} alt="" />
                                     <h5 class="card-title">Current Quentity: {products.quentity}</h5>
                                     <p class="card-text">Get the product delivered by pressing delivered</p>
                                     <button className='btn btn-primary my-3 '> Delivered </button>
@@ -89,8 +120,11 @@ const Manageproduct = () => {
                                     <h5 class="card-title">Current quentity is {products.quentity}</h5>
                                     <p class="card-text">Restock Now!</p>
 
-                                    <input type="text" placeholder='Quntity' />
-                                    <input className='btn btn-primary mx-3 my-2' type="submit" value="Restock" />
+                                    <form onSubmit={handleUpdateQuantity} >
+                                        <input ref={refRestockQuentity} type="text" placeholder='Quantity' />
+                                        <input className='btn btn-primary mx-3 my-2' type="submit" value="Restock" />
+                                    </form>
+
                                 </div>
 
                             </div>
