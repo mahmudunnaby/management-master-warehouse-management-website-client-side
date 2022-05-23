@@ -14,6 +14,11 @@ const Manageproduct = () => {
     }, [])
     console.log(products);
 
+
+
+
+
+
     // console.log(products);
     return (
         <div className='container'>
@@ -66,7 +71,7 @@ const Manageproduct = () => {
                                     <h5 class="card-title">Current Quentity: {products.quentity}</h5>
                                     <p class="card-text">Get the product delivered by pressing delivered</p>
                                     <button className='btn btn-primary my-3 '> Delivered </button>
-                                    <ProgressBar animated now={20} />
+                                    <ProgressBar animated now={products.quentity} />
                                 </div>
 
                             </div>

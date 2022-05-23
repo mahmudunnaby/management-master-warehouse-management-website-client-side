@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FormControl, InputGroup } from 'react-bootstrap';
+import { FormControl, InputGroup, ProgressBar } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import styles from './ImmediateRestock.css'
 
@@ -52,7 +52,7 @@ const ImmediateRestock = () => {
     // console.log(quantity)
 
     return (
-        <div>
+        <div >
             <div className='mt-5 '>
                 <div className='container  space-inventory'>
                     <h1 className='mt-5 product-title fw-bold text-primary'> IMMEDIATE RESTOCK  </h1>
@@ -68,6 +68,7 @@ const ImmediateRestock = () => {
                                 <tr>
                                     <th scope="col">Picture</th>
                                     <th scope="col">Product Name</th>
+                                    <th scope="col">In A Glance</th>
                                     <th scope="col">Quantity</th>
                                     <th scope="col">Handle</th>
                                     <th scope="col">Remove Product</th>
@@ -81,6 +82,7 @@ const ImmediateRestock = () => {
 
                                             <th scope="row"><img className='product-img' src={remaining.picture} alt="" /></th>
                                             <td>{remaining.name}</td>
+                                            <td><ProgressBar animated now={remaining.quentity} /></td>
                                             <td className='text-danger fw-bold'>{remaining.quentity}</td>
                                             <td><button onClick={() => navigateToManageProduct(remaining._id)} className='btn btn-primary'> Manage</button></td>
                                             <td><button onClick={() => handleDelete(remaining._id)} className='btn btn-danger'> Delete</button></td>
