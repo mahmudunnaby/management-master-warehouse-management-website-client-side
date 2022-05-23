@@ -22,6 +22,27 @@ const Manage = () => {
         navigate('/additem')
     }
 
+    const handleDelete = (id) => {
+
+        const proceed = window.confirm('Are you sure you want to delete this item ?')
+        if (proceed) {
+            console.log(id, 'delete')
+            const url = `http://localhost:5000/products/${id}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        console.log('deleted')
+                        const remaining = products.filter(product => product._id !== id)
+                        setProducts(remaining)
+                    }
+                })
+        }
+
+    }
+
     return (
         <div className='container table-responsive-sm space-inventory mt-5 '>
             <h1 className='my-5 product-title fw-bold text-primary'>INVENTORY DASHBOARD</h1>
@@ -47,7 +68,10 @@ const Manage = () => {
                                 <td>{product.quentity}</td>
                                 <td>{product.price}</td>
                                 <td><button onClick={() => navigateToManageProduct(product._id)} className='btn btn-primary'> Manage</button></td>
-                                <td><button className='btn btn-danger'> Delete</button></td>
+                                <td><button
+                                    className='btn btn-danger' onClick={() => handleDelete(product._id)}>
+
+                                    Delete</button></td>
                             </tr>)
 
                         })

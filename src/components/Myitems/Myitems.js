@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const Myitems = () => {
     const [products, setProducts] = useState([])
     const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch(`http://localhost:5000/myitems/${user.email}`)
@@ -12,7 +14,29 @@ const Myitems = () => {
             .then(data => setProducts(data))
     }, [])
 
-    const navigateToManageProduct = () => {
+    const navigateToManageProduct = (id) => {
+        navigate(`/manage/${id}`)
+
+    }
+
+    const handleDelete = (id) => {
+
+        const proceed = window.confirm('Are you sure you want to delete this item ?')
+        if (proceed) {
+            console.log(id, 'delete')
+            const url = `http://localhost:5000/products/${id}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        console.log('deleted')
+                        const remaining = products.filter(product => product._id !== id)
+                        setProducts(remaining)
+                    }
+                })
+        }
 
     }
     return (
@@ -43,7 +67,7 @@ const Myitems = () => {
                                     <td>{product.quentity}</td>
                                     <td>{product.price}</td>
                                     <td><button onClick={() => navigateToManageProduct(product._id)} className='btn btn-primary'> Manage</button></td>
-                                    <td><button className='btn btn-danger'> Delete</button></td>
+                                    <td><button onClick={() => handleDelete(product._id)} className='btn btn-danger'> Delete</button></td>
                                 </tr>)
 
                             })

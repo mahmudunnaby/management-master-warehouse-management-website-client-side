@@ -4,23 +4,26 @@ import { useParams } from 'react-router-dom';
 
 const Manageproduct = () => {
     const { manageproduct } = useParams()
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState({})
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        const url = `http://localhost:5000/products/${manageproduct}`
+        fetch(url)
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => setProducts(data))
     }, [])
-
-
     console.log(products);
+
+    // console.log(products);
     return (
         <div className='container'>
-            <h1 className='mt-5 '>Update Inventory: {manageproduct}</h1>
-            <img className='w-50' src='https://cdn.dribbble.com/users/1677926/screenshots/6803180/inventory.gif' alt="" />
+            <h1 className='mt-5 '>Update Inventory : {products.name}</h1>
+
+            <img className='w-50' src={products.picture} alt="" />
+            {/* <img className='w-50' src='https://cdn.dribbble.com/users/1677926/screenshots/6803180/inventory.gif' alt="" /> */}
 
 
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-4">
                     <div class="list-group" id="list-tab" role="tablist">
                         <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Status </a>
@@ -33,10 +36,19 @@ const Manageproduct = () => {
                 <div class="col-8">
                     <div class="tab-content" id="nav-tabContent">
 
-                        <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list"><img src="..." class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                            <div class="card-body bg-primary text-white d-flex ">
+                                <div>
+                                    <img className='w-50' src={products.picture} alt="" />
+                                </div>
+                                <div>
+                                    <h2>Current Status</h2>
+                                    <h5 class="card-title">Name: {products.name}</h5>
+                                    <p class="card-text">Supplier: {products.supplier}</p>
+                                    <p class="card-text">Quentity: {products.quentity}</p>
+                                    <p class="card-text">Price: {products.price}</p>
+                                </div>
+
 
                             </div>
                         </div>
@@ -51,8 +63,8 @@ const Manageproduct = () => {
                                 </div>
                                 <div class="card-body">
                                     <img className='mb-3' src="" alt="" />
-                                    <h5 class="card-title">Current Quentity:</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <h5 class="card-title">Current Quentity: {products.quentity}</h5>
+                                    <p class="card-text">Get the product delivered by pressing delivered</p>
                                     <button className='btn btn-primary my-3 '> Delivered </button>
                                     <ProgressBar animated now={20} />
                                 </div>
@@ -66,11 +78,11 @@ const Manageproduct = () => {
 
                             <div class="card text-center">
                                 <div class="card-header">
-                                    Featured
+                                    Restock
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">Special title treatment</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <h5 class="card-title">Current quentity is {products.quentity}</h5>
+                                    <p class="card-text">Restock Now!</p>
 
                                     <input type="text" placeholder='Quntity' />
                                     <input className='btn btn-primary mx-3 my-2' type="submit" value="Restock" />
