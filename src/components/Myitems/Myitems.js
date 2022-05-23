@@ -31,10 +31,12 @@ const Myitems = () => {
                             <th scope="col">Remove Product</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         {
-                            products.map(product => {
-                                return (<tr>
+                            products?.map(product => {
+
+                                return (<tr key={product._id}>
+
                                     <th scope="row"><img className='product-img' src={product.picture} alt="" /></th>
                                     <td>{product.name}</td>
                                     <td>{product.supplier}</td>
