@@ -4,6 +4,9 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Sociallogin from './Sociallogin/Sociallogin';
 
 const Login = () => {
@@ -42,7 +45,7 @@ const Login = () => {
     const resetPassword = async () => {
         const email = refEmail.current.value;
         await sendPasswordResetEmail(email)
-        alert('email sent')
+        toast('Email sent')
 
     }
     if (user) {
@@ -88,7 +91,7 @@ const Login = () => {
                 <div className='mb-5'>
                     <img className='w-50' src="https://i.ibb.co/sgRqGmS/login.png" alt="" />
                 </div>
-
+                <ToastContainer />
             </div>
 
 

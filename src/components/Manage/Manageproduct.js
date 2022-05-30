@@ -9,7 +9,7 @@ const Manageproduct = () => {
     const refRestockQuentity = useRef('')
 
     useEffect(() => {
-        const url = `http://localhost:5000/products/${manageproduct}`
+        const url = `https://ancient-dusk-11261.herokuapp.com/products/${manageproduct}`
         fetch(url)
             .then(res => res.json())
             .then(data => setProducts(data))
@@ -27,7 +27,7 @@ const Manageproduct = () => {
         console.log(updateQuentity, typeof (updateQuentity));
 
 
-        fetch(`http://localhost:5000/products/${manageproduct}`, {
+        fetch(`https://ancient-dusk-11261.herokuapp.com/products/${manageproduct}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ const Manageproduct = () => {
 
         const updateDelivered = { quentity: remaining }
 
-        fetch(`http://localhost:5000/delivered/${manageproduct}`, {
+        fetch(`https://ancient-dusk-11261.herokuapp.com/delivered/${manageproduct}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

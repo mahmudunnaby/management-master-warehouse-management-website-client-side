@@ -6,7 +6,7 @@ const Totalproduct = () => {
     const [sum, setSum] = useState(0)
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://ancient-dusk-11261.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])

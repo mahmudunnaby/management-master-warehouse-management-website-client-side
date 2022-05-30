@@ -9,7 +9,7 @@ const Myitems = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myitems/${user.email}`)
+        fetch(`https://ancient-dusk-11261.herokuapp.com/myitems/${user.email}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
@@ -24,7 +24,7 @@ const Myitems = () => {
         const proceed = window.confirm('Are you sure you want to delete this item ?')
         if (proceed) {
             console.log(id, 'delete')
-            const url = `http://localhost:5000/products/${id}`
+            const url = `https://ancient-dusk-11261.herokuapp.com/products/${id}`
             fetch(url, {
                 method: 'DELETE'
             })
